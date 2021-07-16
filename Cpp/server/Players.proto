@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package test;
+
+message Player {
+    int32 PlayerId=1;
+    string PlayerName=2;
+    int32 PlayerNumber=3;
+    string PlayerPosition=4;
+}
+
+message Players {
+    repeated Player PlayerList=1;
+}
