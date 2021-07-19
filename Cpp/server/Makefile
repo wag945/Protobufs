@@ -142,6 +142,33 @@ server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
+Players.pb.o: Players.pb.cc.o
+
+.PHONY : Players.pb.o
+
+# target to build an object file
+Players.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Players.pb.cc.o
+.PHONY : Players.pb.cc.o
+
+Players.pb.i: Players.pb.cc.i
+
+.PHONY : Players.pb.i
+
+# target to preprocess a source file
+Players.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Players.pb.cc.i
+.PHONY : Players.pb.cc.i
+
+Players.pb.s: Players.pb.cc.s
+
+.PHONY : Players.pb.s
+
+# target to generate assembly for a file
+Players.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Players.pb.cc.s
+.PHONY : Players.pb.cc.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -178,6 +205,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... server"
+	@echo "... Players.pb.o"
+	@echo "... Players.pb.i"
+	@echo "... Players.pb.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
