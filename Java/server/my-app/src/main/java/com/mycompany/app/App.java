@@ -20,28 +20,37 @@ public class App
     {
         while(true)
         {
-            readMessageFromSocket(channel).ifPresent(System.out::println);
+            readMessageFromSocket(channel);
             Thread.sleep(100);
         }
     }
 
-    private static Optional<String> readMessageFromSocket(SocketChannel channel) throws IOException
+//    private static Optional<String> readMessageFromSocket(SocketChannel channel) throws IOException
+    private static void readMessageFromSocket(SocketChannel channel) throws IOException
     {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         int bytesRead = channel.read(buffer);
         System.out.println("bytesRead: " + bytesRead);
         if (bytesRead < 0)
         {
-            return Optional.empty();
+            System.out.println("returning because bytesRead < 0");
+//            return Optional.empty();
+            return;
         }
+        System.out.println("after bytesRead < 0 check");
         byte[] bytes = new byte[bytesRead];
         buffer.flip();
         buffer.get(bytes);
         String message = new String(bytes);
+        System.out.println("About to call parseFrom");
         PlayersOuterClass.Players players = Players.parseFrom(bytes);
-        PlayersOuterClass.Player player = players.getPlayerList(0);
-        System.out.println(player.toString());
-        return Optional.of(message);
+        System.out.println("Players size:" + players.getPlayerListCount());
+        for (int i = 0; i < players.getPlayerListCount(); i++)
+        {
+            PlayersOuterClass.Player player = players.getPlayerList(i);
+            System.out.println(player.toString());
+        }
+//        return Optional.of(message);
     }
 
     public static void main(String[] args)

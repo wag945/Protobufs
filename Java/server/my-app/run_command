@@ -1,0 +1,1 @@
+java -cp target/dependency/protobuf-java-3.17.3.jar:target/my-app-1.0-SNAPSHOT.jar comycompany.app.App
