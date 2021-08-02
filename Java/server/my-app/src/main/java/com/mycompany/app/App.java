@@ -32,7 +32,6 @@ public class App
         }
     }
 
-//    private static Optional<String> readMessageFromSocket(SocketChannel channel) throws IOException
     private void readMessageFromSocket(SocketChannel channel) throws IOException
     {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
@@ -41,26 +40,22 @@ public class App
         if (bytesRead < 0)
         {
             System.out.println("returning because bytesRead < 0");
-//            return Optional.empty();
             return;
         }
-        System.out.println("after bytesRead < 0 check");
         byte[] bytes = new byte[bytesRead];
         buffer.flip();
         buffer.get(bytes);
         String message = new String(bytes);
-        System.out.println("About to call parseFrom");
         PlayersOuterClass.Players players = Players.parseFrom(bytes);
         myPlayers = players;
-        System.out.println("Players size:" + players.getPlayerListCount());
-        for (int i = 0; i < players.getPlayerListCount(); i++)
-        {
-            PlayersOuterClass.Player player = players.getPlayerList(i);
-            System.out.println(player.toString());
-        }
+        // System.out.println("Players size:" + players.getPlayerListCount());
+        // for (int i = 0; i < players.getPlayerListCount(); i++)
+        // {
+        //     PlayersOuterClass.Player player = players.getPlayerList(i);
+        //     System.out.println(player.toString());
+        // }
 
         notifyAllObservers();
-//        return Optional.of(message);
     }
 
     public void attach(PlayersObserver observer){
