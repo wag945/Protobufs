@@ -109,8 +109,53 @@ int main()
 
     usleep(1000000);
 
+    int count = 1;
+
     for(;;)
     {
+        if (10 == count)
+        {
+            player = players->add_playerlist();
+
+            if (player)
+            {
+                player->set_playerid(3);
+                player->set_playername("Zach Ertz");
+                player->set_playernumber(86);
+                player->set_playerposition("Tight End");
+
+                cout << "Player: " << player->DebugString() << endl;
+            }
+        }
+        if (20 == count) 
+        {
+            player = players->add_playerlist();
+
+            if (player)
+            {
+                player->set_playerid(4);
+                player->set_playername("Jalen Raegor");
+                player->set_playernumber(18);
+                player->set_playerposition("Wide Receiver");
+
+                cout << "Player: " << player->DebugString() << endl;
+            }
+        }
+        if (30 == count) 
+        {
+            player = players->add_playerlist();
+
+            if (player)
+            {
+                player->set_playerid(5);
+                player->set_playername("Flectcher Cox");
+                player->set_playernumber(91);
+                player->set_playerposition("Defensive Tackle");
+
+                cout << "Player: " << player->DebugString() << endl;
+            }
+        }
+
         int size = players->ByteSizeLong();
 
         cout << "players size: " << size << endl;
@@ -126,6 +171,8 @@ int main()
             perror("writing on stream socket");
         }
         usleep(1000000);
+ 
+        count++;
     }
     close(sock);
 }

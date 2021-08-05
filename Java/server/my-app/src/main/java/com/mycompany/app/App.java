@@ -79,6 +79,7 @@ public class App
         App app = new App();
 
         PlayerWindow playerWindow = new PlayerWindow(app);
+        playerWindow.createAndShowGUI();
 
         Path socketFile = Path.of("/tmp").resolve("PlayersServer");
         //Files.deleteIfExists(socketFile);
