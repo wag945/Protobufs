@@ -164,7 +164,7 @@ public class PlayerWindow extends PlayersObserver
     }
 
     public void createAndShowGUI() {
-        JFrame frame = new JFrame("ListDemo");
+        JFrame frame = new JFrame("PlayerWindow");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JComponent newContentPane = panel;
